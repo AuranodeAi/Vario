@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Ensures the font matches */
+  background-color: #f8fafc; /* Optional: A nice light background for the rest of the app */
+}
+
+/* Make sure all elements respect the box-sizing */
+*, *:before, *:after {
+  box-sizing: inherit;
+}

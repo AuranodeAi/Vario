@@ -1,0 +1,186 @@
+/* --- Main Layout --- */
+.dashboard-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* --- Hero Section --- */
+.dashboard-hero {
+  margin-bottom: 3rem;
+  padding: 2rem 0 1rem 0;
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0;
+  }
+
+  /* Text gradient matching the AuraNodeAI Logo */
+  .gradient-text {
+    background: linear-gradient(90deg, #00f0ff, #b026ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* --- Responsive Grid --- */
+.bento-grid {
+  display: grid;
+  /* Automatically fits cards. Minimum width 300px, expands to fill space */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+
+/* --- The Bento Cards --- */
+.bento-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 1.75rem;
+  text-decoration: none;
+  /* Very soft, premium drop shadow */
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  /* Subtle border to define the shape */
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  /* Smooth, bouncy transition */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Modern floating icon box */
+  .icon-box {
+    height: 60px;
+    width: 60px;
+    border-radius: 16px;
+    background-color: #f8fafc;
+    color: #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid #f1f5f9;
+
+    i {
+      font-size: 1.75rem;
+    }
+  }
+
+  .text-content {
+    h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin: 0 0 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
+  /* Action area at the bottom */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+
+    .action-text {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #94a3b8;
+      transition: color 0.3s ease;
+    }
+
+    .arrow-circle {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      background-color: #f1f5f9;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      i { font-size: 0.8rem; }
+    }
+  }
+}
+
+/* --- The "Wow" Hover Effects --- */
+.bento-card:hover {
+  /* Lift the card up */
+  transform: translateY(-8px);
+  /* Intensify the shadow with a hint of purple */
+  box-shadow: 0 20px 40px rgba(176, 38, 255, 0.08);
+  border-color: rgba(176, 38, 255, 0.2);
+
+  /* Make the icon box glow with your brand colors */
+  .icon-box {
+    background: linear-gradient(135deg, #00f0ff 0%, #b026ff 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(176, 38, 255, 0.3);
+    transform: scale(1.05);
+  }
+
+  .text-content h3 {
+    color: #b026ff; /* Highlight title */
+  }
+
+  .card-footer {
+    border-top-color: rgba(176, 38, 255, 0.1);
+
+    .action-text {
+      color: #0f172a;
+    }
+
+    /* Move and highlight the arrow */
+    .arrow-circle {
+      background-color: #0f172a;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .dashboard-hero {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    
+    h1 { font-size: 1.75rem; }
+  }
+  
+  .bento-card {
+    padding: 1.25rem;
+  }
+}

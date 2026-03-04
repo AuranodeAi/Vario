@@ -1,0 +1,37 @@
+<div class="dashboard-wrapper">
+  
+  <div class="dashboard-hero">
+    <div class="hero-text">
+      <h1>Welcome back, <span class="gradient-text">Admin</span></h1>
+      <p>Select a module below to manage your operations and insights.</p>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    
+    @for (tool of dashboardTools; track tool.id) {
+      <a [routerLink]="tool.route" class="bento-card">
+        
+        <div class="card-body">
+          <div class="icon-box">
+            <i [class]="tool.icon"></i>
+          </div>
+          
+          <div class="text-content">
+            <h3>{{ tool.title }}</h3>
+            <p>{{ tool.desc }}</p>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span class="action-text">Launch Workspace</span>
+          <div class="arrow-circle">
+            <i class="pi pi-arrow-right"></i>
+          </div>
+        </div>
+        
+      </a>
+    }
+
+  </div>
+</div>

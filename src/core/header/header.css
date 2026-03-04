@@ -1,0 +1,117 @@
+/* 1. Main Header Container */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 2rem;
+  background-color: #0f172a; /* Deep Slate Navy */
+  border-bottom: 1px solid #1e293b;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Layout Sections */
+.header-section {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.header-section.center { justify-content: center; }
+.header-section.right { justify-content: flex-end; }
+
+/* 3. Branding (Left) */
+.brand-logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px; /* Slightly rounds your square logo */
+  object-fit: cover;
+  margin-right: 12px;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); /* Adds a subtle neon glow */
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* 4. Organization (Center) */
+.org-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* 5. Profile & Dropdown (Right) */
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.avatar {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  border: 2px solid #3b82f6;
+}
+
+.username {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.dropdown-icon {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}
+
+/* 6. Dropdown Menu Logic */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #1e293b;
+  min-width: 180px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 100;
+  margin-top: 10px;
+}
+
+/* Show dropdown when hovering over the profile-menu area */
+.profile-menu:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Rotate arrow on hover */
+.profile-menu:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-content a {
+  color: #e2e8f0;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover { background-color: #334155; }
+.dropdown-content .divider { height: 1px; background-color: #334155; margin: 4px 0; }
+.dropdown-content a.logout-text { color: #ef4444; }
+.dropdown-content a.logout-text:hover { background-color: rgba(239, 68, 68, 0.1); }

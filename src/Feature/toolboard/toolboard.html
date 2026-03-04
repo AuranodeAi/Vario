@@ -1,0 +1,48 @@
+<div class="workspace-container" [class.collapsed]="!isSidebarOpen">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <span class="workspace-label">WORKSPACE</span>
+      @if (isSidebarOpen) {
+        <h3 class="workspace-title">{{ currentToolName }}</h3>
+      } @else {
+        <h3 class="workspace-title" title="{{ currentToolName }}">
+          {{ currentToolName.charAt(0) }}
+        </h3>
+      }
+    </div>
+
+    <nav class="sidebar-nav">
+      <a
+        *ngFor="let menu of currentToolMenus; trackBy: trackById"
+        [routerLink]="menu.route"
+        class="nav-item"
+        routerLinkActive="active"
+      >
+        <i [class]="menu.icon"></i>
+        <span class="nav-text">{{ menu.label }}</span>
+      </a>
+    </nav>
+
+    <div class="spacer"></div>
+
+    <div class="sidebar-footer">
+      <a routerLink="/dashboard" class="nav-item exit-btn">
+        <i class="pi pi-th-large"></i>
+        <span class="nav-text">Main Dashboard</span>
+      </a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="content-toolbar">
+      <button class="toggle-btn" (click)="toggleSidebar()">
+        <i class="pi pi-bars"></i>
+      </button>
+      <h2 class="page-title">Overview</h2>
+    </header>
+
+    <div class="router-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

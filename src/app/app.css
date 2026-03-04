@@ -1,0 +1,37 @@
+/* 1. Make the entire app a full-height flex container */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Forces the app to be at least the height of the screen */
+  background-color: #f8fafc; /* A clean, light background for the whole app */
+}
+
+/* 2. The Main Content Area */
+.content {
+  flex: 1; /* CRITICAL: This forces the middle section to grow and push the footer to the bottom */
+  display: flex;
+  flex-direction: column;
+  
+  /* Optional but recommended: Constrain the max width so it doesn't look stretched on ultra-wide monitors */
+  width: 100%;
+  max-width: 1600px; 
+  margin: 0 auto; /* Centers the content */
+  
+  /* Default padding for desktop */
+  padding: 2rem; 
+}
+
+/* 3. Responsive Adjustments for Mobile & Tablets */
+@media (max-width: 768px) {
+  .content {
+    /* Reduce padding on smaller screens to give data tables more room */
+    padding: 1rem; 
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    /* Even less padding for mobile phones */
+    padding: 0.5rem; 
+  }
+}

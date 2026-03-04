@@ -1,0 +1,164 @@
+/* --- 1. Main Container --- */
+/* Calculate height minus the 70px from your global header */
+.workspace-container {
+  display: flex;
+  height: calc(100vh - 70px); 
+  width: 100%;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+/* --- 2. The Sidebar --- */
+.sidebar {
+  width: 260px;
+  background-color: #0f172a; /* Matches your top header */
+  border-right: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+  flex-shrink: 0;
+}
+
+/* When Collapsed */
+.workspace-container.collapsed .sidebar {
+  width: 70px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 1.5rem 1rem 1rem 1rem;
+  border-bottom: 1px solid #1e293b;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.workspace-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.workspace-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #00f0ff; /* Matches AuraNodeAI cyan */
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+
+  i {
+    font-size: 1.25rem;
+    min-width: 30px; /* Keeps icons aligned even when text is hidden */
+  }
+
+  .nav-text {
+    margin-left: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover {
+    background-color: #1e293b;
+    color: #ffffff;
+  }
+
+  &.active {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border-left-color: #3b82f6;
+  }
+}
+
+/* Hide text when collapsed */
+.workspace-container.collapsed .nav-text,
+.workspace-container.collapsed .workspace-label {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sidebar Footer */
+.spacer { flex-grow: 1; }
+.sidebar-footer {
+  border-top: 1px solid #1e293b;
+  padding: 1rem 0;
+}
+.exit-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-left-color: #ef4444;
+}
+
+/* --- 3. Main Content Area --- */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Inner Toolbar */
+.content-toolbar {
+  height: 60px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: #475569;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i { font-size: 1.25rem; }
+  
+  &:hover { background-color: #f1f5f9; }
+}
+
+.page-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Router Wrapper (Where pages load) */
+.router-wrapper {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto; /* Adds a scrollbar only to the content area if it gets too long */
+}
+

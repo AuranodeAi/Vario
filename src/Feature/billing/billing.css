@@ -1,0 +1,187 @@
+/* Main Container */
+.invoice-container {
+  max-width: 850px; /* Optimal for A4 Width */
+  margin: 20px auto;
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  border: 1px solid #000000;
+  line-height: 1.4;
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.underline { text-decoration: underline; }
+.p-2 { padding: 6px 10px; }
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 24px; }
+.mb-1 { margin-bottom: 4px; }
+.mb-4 { margin-bottom: 24px; }
+.w-100 { width: 100%; }
+
+/* Borders */
+.border-bottom { border-bottom: 1px solid #000000; }
+.border-right { border-right: 1px solid #000000; }
+
+.label {
+  font-size: 10px;
+  color: #333;
+}
+
+/* Top Section Grid/Flex */
+.top-section, .bottom-section {
+  display: flex;
+}
+
+.col-left {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.col-right {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-row {
+  display: flex;
+  width: 100%;
+}
+
+.meta-col {
+  flex: 0 0 50%;
+}
+
+/* The Table */
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.invoice-table th, 
+.invoice-table td {
+  border-right: 1px solid #000;
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+.invoice-table th:last-child, 
+.invoice-table td:last-child {
+  border-right: none; /* Removed so it doesn't double up with outer container */
+}
+
+.invoice-table th {
+  border-bottom: 1px solid #000;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fafafa;
+}
+
+/* Removes horizontal lines between items to mimic the GST format */
+.invoice-table tbody tr td {
+  border-bottom: none;
+}
+
+/* Spacer row to push totals to the bottom if needed */
+.spacer-row td {
+  height: 60px; /* Adjust based on how many items you have */
+}
+
+/* Totals and Taxes */
+.tax-row td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.invoice-table tfoot th {
+  border-top: 1px solid #000;
+  border-bottom: none;
+  background-color: #fff;
+  padding: 8px;
+}
+
+/* Bank Mini-Table */
+.bank-table {
+  width: 100%;
+  font-size: 11px;
+}
+.bank-table td {
+  padding: 2px 0;
+}
+
+.signature-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* --- Print Styles --- */
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm; /* Minimal margins for print */
+  }
+  
+  body {
+    background-color: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide your Angular Sidebar, Topbar, and Dashboard elements when printing */
+  app-header, .sidebar, .topbar, .no-print {
+    display: none !important;
+  }
+  
+  /* Reset container margins for print */
+  .invoice-container {
+    margin: 0;
+    max-width: 100%;
+    border: 1px solid #000;
+  }
+}
+
+/* --- Action Bar & Print Button --- */
+.action-bar {
+  max-width: 850px; /* Matches the invoice container width */
+  margin: 20px auto 0; /* Centers it and adds top spacing */
+  display: flex;
+  justify-content: flex-end; /* Pushes the button to the right */
+  padding-bottom: 10px;
+}
+
+.print-btn {
+  background-color: #3b82f6; /* Varity Brand Blue */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  transition: all 0.2s ease;
+}
+
+.print-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.3);
+}
+
+.print-btn:active {
+  transform: translateY(0);
+}
