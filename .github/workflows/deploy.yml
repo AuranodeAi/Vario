@@ -12,23 +12,22 @@ jobs:
 build-and-deploy:
 runs-on: ubuntu-latest
 
-```
 steps:
-  - name: Checkout Code
+  - name: Checkout repository
     uses: actions/checkout@v4
 
-  - name: Setup Node.js
+  - name: Setup Node
     uses: actions/setup-node@v4
     with:
-      node-version: '20'
+      node-version: "20"
 
-  - name: Install Dependencies
+  - name: Install dependencies
     run: npm install
 
-  - name: Build Project
+  - name: Build Angular project
     run: npx ng build --configuration production --base-href "/Vario/"
 
-  - name: Fix Angular Routing (404 fallback)
+  - name: Copy index.html to 404.html
     run: cp dist/vario/browser/index.html dist/vario/browser/404.html
 
   - name: Deploy to GitHub Pages
@@ -36,4 +35,3 @@ steps:
     with:
       folder: dist/vario/browser
       branch: gh-pages
-```
