@@ -3,30 +3,35 @@ on:
   push:
     branches:
       - QA
+# THIS IS THE FIX: Set the environment variable for the whole workflow
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4 # Updated from v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4 # Updated from v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '24' # Updated to the modern standard
+          node-version: '24' # Set the build environment to Node 24
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build Project
+        # Ensure base-href matches your repo name 'Vario'
         run: npx ng build --configuration production --base-href "/Vario/"
 
       - name: Fix for Angular Routing (404)
-        # This copies index.html to 404.html so refreshes work on GitHub Pages
+        # Standard Angular builds go to dist/project-name/browser
         run: cp dist/vario/browser/index.html dist/vario/browser/404.html
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/vario/browser # Most modern Angular versions build into a /browser subfolder
+          folder: dist/vario/browser 
           branch: gh-pages
