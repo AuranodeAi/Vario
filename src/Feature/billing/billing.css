@@ -122,7 +122,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  /* height: 100%; */
 }
 
 /* --- Print Styles --- */
@@ -184,4 +184,205 @@
 
 .print-btn:active {
   transform: translateY(0);
+}
+
+/* Editable Input Fields for Screen */
+.invoice-input {
+  width: 100%;
+  border: 1px dashed #cbd5e1; /* Subtle dashed line to show it's editable */
+  background-color: #f8fafc;
+  padding: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* For multi-line things like addresses */
+.invoice-textarea {
+  resize: vertical; /* Allows dragging to make it taller */
+  min-height: 60px;
+}
+
+/* Highlight when you click into the box */
+.invoice-input:focus {
+  outline: none;
+  border: 1px solid #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* --- THE PRINT TRICK --- */
+@media print {
+  /* Remove all borders, backgrounds, and padding when printing */
+  .invoice-input {
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    resize: none !important; /* Hide textarea drag handle */
+  }
+}
+
+
+.invoice-wrapper{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+  font-family:Segoe UI;
+}
+
+.invoice-title{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.customer-box{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.customer-box input{
+  padding:6px;
+  width:100%;
+}
+
+.invoice-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.invoice-table th{
+  background:#3fa9f5;
+  color:white;
+  padding:10px;
+}
+
+.invoice-table td{
+  border:1px solid #ddd;
+  padding:6px;
+}
+
+.invoice-table input{
+  width:100%;
+  padding:5px;
+}
+
+.amount{
+  font-weight:bold;
+}
+
+.add-item{
+  background:#28a745;
+   color:white;
+  border:none;
+  padding:4px 8px;
+  left: 2px;
+    position: relative;
+}
+
+.remove-btn{
+  background:red;
+  color:white;
+  border:none;
+  padding:4px 8px;
+}
+
+.totals-box{
+  margin-top:20px;
+  margin-left:auto;
+  width:300px;
+}
+
+.totals-box div{
+  display:flex;
+  justify-content:space-between;
+  padding:2px 0;
+  margin-right: 85px;
+}
+
+.grand-total{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.action-buttons{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+}
+
+.print-btn{
+  background:#007bff;
+  color:white;
+  border:none;
+  padding:10px 20px;
+}
+
+.save-btn{
+  background:#28a745;
+  color:white;
+  border:none;
+  padding:10px 20px;
+}
+
+/* For Printing */
+@media print {
+  body * {
+    visibility: hidden; /* hide everything */
+  }
+
+  @media print {
+  .PrintHide {
+    display: none !important; /* hide elements from print */
+  }
+}
+
+
+
+@media print {
+  .PrintHide {
+    display: none !important;
+  }
+}
+  .invoice-container, .invoice-container * {
+    visibility: visible; /* show invoice container */
+  }
+  .invoice-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.right{
+      text-align: right;
+}
+
+.center{
+  text-align: center;
+}
+
+@media print {
+  /* Hides the default browser header and footer */
+  @page {
+    margin: 2;
+  }
+
+  /* Adds artificial margin back so your content isn't touching the paper edge */
+  body {
+    margin: 1.6cm;
+  }
+
+  /* Ensure the print button and other UI elements stay hidden */
+  .no-print, .action-bar, p-dialog {
+    display: none !important;
+  }
+
+
 }

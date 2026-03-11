@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -12,4 +14,25 @@ html, body {
 /* Make sure all elements respect the box-sizing */
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+/* For Printing */
+@media print {
+  body * {
+    visibility: hidden; /* hide everything */
+  }
+}
+
+  @media print {
+  .PrintHide {
+    display: none !important; /* hide elements from print */
+  }
+}
+
+
+
+@media print {
+  .PrintHide {
+    display: none !important;
+  }
 }

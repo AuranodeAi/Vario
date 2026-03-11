@@ -6,17 +6,17 @@
   </div>
 
   <div class="header-section center">
-    <h2 class="org-name">AuraNode AI Corporation</h2>
+    <h2 class="org-name">AuraNode AI</h2>
   </div>
 
   <div class="header-section right">
-    <div class="profile-menu">
-       <img src="" alt="Admin" class="avatar" /> 
-      <i class="fa-regular fa-circle-user"></i>
+    <div class="profile-menu" (click)="toggleMenu()">
+       <!-- <img src="" alt="Admin" class="avatar" />  -->
+      <i class="pi pi-user" style="font-size: 1.5rem"></i>
       <span class="username">Admin User</span>
       <i class="pi pi-chevron-down dropdown-icon"></i>
       
-      <div class="dropdown-content">
+      <div class="dropdown-content" [class.show]="isMenuOpen" >
         <a href="#"><i class="pi pi-user"></i> My Profile</a>
         <a href="#"><i class="pi pi-cog"></i> Settings</a>
         <div class="divider"></div>

@@ -1,0 +1,118 @@
+<div class="invoice-wrapper">
+
+  <h2 class="invoice-title">Sales Invoice</h2>
+
+  <!-- Customer Details -->
+  <div class="customer-box">
+    <div>
+      <label>Customer Name</label>
+      <input [(ngModel)]="customer.name" placeholder="Customer Name">
+    </div>
+
+    <div>
+      <label>Mobile</label>
+      <input [(ngModel)]="customer.mobile">
+    </div>
+
+    <div>
+      <label>Address</label>
+      <input [(ngModel)]="customer.address">
+    </div>
+
+    <div>
+      <label>Invoice Date</label>
+      <input type="date" [(ngModel)]="invoiceDate">
+    </div>
+  </div>
+
+  <!-- Item Table -->
+  <table class="invoice-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>HSN</th>
+        <th>Qty</th>
+        <th>Rate</th>
+        <th>Disc %</th>
+        <th>Amount</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+
+        <td>{{ i + 1 }}</td>
+
+        <td>
+          <input [(ngModel)]="item.description">
+        </td>
+
+        <td>
+          <input [(ngModel)]="item.hsn">
+        </td>
+
+        <td>
+          <input type="number"
+          [(ngModel)]="item.qty"
+          (input)="calculateItem(i)">
+        </td>
+
+        <td>
+          <input type="number"
+          [(ngModel)]="item.rate"
+          (input)="calculateItem(i)">
+        </td>
+
+        <td>
+          <input type="number"
+          [(ngModel)]="item.discount"
+          (input)="calculateItem(i)">
+        </td>
+
+        <td class="amount">
+          ₹ {{ item.total | number:'1.2-2' }}
+        </td>
+
+        <td>
+          <button class="remove-btn" (click)="removeItem(i)">×</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="add-item" (click)="addItem()">+ Add Item</button>
+
+  <!-- Totals -->
+  <div class="totals-box">
+
+    <div>
+      <span>Subtotal</span>
+      <span>₹ {{ subtotal | number:'1.2-2' }}</span>
+    </div>
+
+    <div>
+      <span>CGST (9%)</span>
+      <span>₹ {{ cgst | number:'1.2-2' }}</span>
+    </div>
+
+    <div>
+      <span>SGST (9%)</span>
+      <span>₹ {{ sgst | number:'1.2-2' }}</span>
+    </div>
+
+    <div class="grand-total">
+      <span>Grand Total</span>
+      <span>₹ {{ grandTotal | number:'1.2-2' }}</span>
+    </div>
+
+  </div>
+
+  <div class="action-buttons">
+    <button class="print-btn" (click)="printInvoice()">Print</button>
+    <button class="save-btn">Save Invoice</button>
+  </div>
+
+</div>

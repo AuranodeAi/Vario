@@ -1,0 +1,212 @@
+
+<div class="container">
+
+<h2>Billing Information</h2>
+
+<div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+<form [formGroup]="billingForm" (ngSubmit)="saveBilling()">
+
+<div class="form-grid">
+
+<div class="form-group">
+<input type="text" formControlName="invoiceNo" placeholder=" ">
+<label>Invoice No</label>
+<div class="error" *ngIf="billingForm.get('invoiceNo').invalid && billingForm.get('invoiceNo').touched">
+  <span *ngIf="billingForm.get('invoiceNo').errors['required']">Invoice No is required</span>
+  <span *ngIf="billingForm.get('invoiceNo').errors['pattern']">Only uppercase letters and numbers allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="date" formControlName="invoiceDate" placeholder=" ">
+<label>Invoice Date</label>
+<div class="error" *ngIf="billingForm.get('invoiceDate').invalid && billingForm.get('invoiceDate').touched">
+  Invoice Date is required
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="customerName" placeholder=" ">
+<label>Customer Name</label>
+<div class="error" *ngIf="billingForm.get('customerName').invalid && billingForm.get('customerName').touched">
+  <span *ngIf="billingForm.get('customerName').errors['required']">Customer Name is required</span>
+  <span *ngIf="billingForm.get('customerName').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="deliveryNote" placeholder=" ">
+<label>Delivery Note</label>
+<div class="error" *ngIf="billingForm.get('deliveryNote').invalid && billingForm.get('deliveryNote').touched">
+  <span *ngIf="billingForm.get('deliveryNote').errors['required']">Delivery Note is required</span>
+  <span *ngIf="billingForm.get('deliveryNote').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="termsOfPayment" placeholder=" ">
+<label>Terms Of Payment</label>
+<div class="error" *ngIf="billingForm.get('termsOfPayment').invalid && billingForm.get('termsOfPayment').touched">
+  <span *ngIf="billingForm.get('termsOfPayment').errors['required']">Terms Of Payment is required</span>
+  <span *ngIf="billingForm.get('termsOfPayment').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="referenceNo" placeholder=" ">
+<label>Reference No</label>
+<div class="error" *ngIf="billingForm.get('referenceNo').invalid && billingForm.get('referenceNo').touched">
+  <span *ngIf="billingForm.get('referenceNo').errors['required']">Reference No is required</span>
+  <span *ngIf="billingForm.get('referenceNo').errors['pattern']">Only alphanumeric and spaces allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="otherReferences" placeholder=" ">
+<label>Other References</label>
+<div class="error" *ngIf="billingForm.get('otherReferences').invalid && billingForm.get('otherReferences').touched">
+  <span *ngIf="billingForm.get('otherReferences').errors['required']">Other References is required</span>
+  <span *ngIf="billingForm.get('otherReferences').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="buyerOrderNo" placeholder=" ">
+<label>Buyer Order No</label>
+<div class="error" *ngIf="billingForm.get('buyerOrderNo').invalid && billingForm.get('buyerOrderNo').touched">
+  <span *ngIf="billingForm.get('buyerOrderNo').errors['required']">Buyer Order No is required</span>
+  <span *ngIf="billingForm.get('buyerOrderNo').errors['pattern']">Only alphanumeric and spaces allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="date" formControlName="buyerDated" placeholder=" ">
+<label>Buyer Dated</label>
+<div class="error" *ngIf="billingForm.get('buyerDated').invalid && billingForm.get('buyerDated').touched">
+  Buyer Dated is required
+</div>
+</div>
+
+<div class="form-group">
+<input type="date" formControlName="dispatchDocNo" placeholder=" ">
+<label>Dispatch Doc No</label>
+<div class="error" *ngIf="billingForm.get('dispatchDocNo').invalid && billingForm.get('dispatchDocNo').touched">
+  Dispatch Doc No is required
+</div>
+</div>
+
+<div class="form-group">
+<input type="date" formControlName="deliveryNoteDate" placeholder=" ">
+<label>Delivery Note Date</label>
+<div class="error" *ngIf="billingForm.get('deliveryNoteDate').invalid && billingForm.get('deliveryNoteDate').touched">
+  Delivery Note Date is required
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="dispatchedThrough" placeholder=" ">
+<label>Dispatched Through</label>
+<div class="error" *ngIf="billingForm.get('dispatchedThrough').invalid && billingForm.get('dispatchedThrough').touched">
+  <span *ngIf="billingForm.get('dispatchedThrough').errors['required']">Dispatched Through is required</span>
+  <span *ngIf="billingForm.get('dispatchedThrough').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="destination" placeholder=" ">
+<label>Destination</label>
+<div class="error" *ngIf="billingForm.get('destination').invalid && billingForm.get('destination').touched">
+  <span *ngIf="billingForm.get('destination').errors['required']">Destination is required</span>
+  <span *ngIf="billingForm.get('destination').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="termsOfDelivery" placeholder=" ">
+<label>Terms Of Delivery</label>
+<div class="error" *ngIf="billingForm.get('termsOfDelivery').invalid && billingForm.get('termsOfDelivery').touched">
+  <span *ngIf="billingForm.get('termsOfDelivery').errors['required']">Terms Of Delivery is required</span>
+  <span *ngIf="billingForm.get('termsOfDelivery').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="buyerName" placeholder=" ">
+<label>Buyer Name</label>
+<div class="error" *ngIf="billingForm.get('buyerName').invalid && billingForm.get('buyerName').touched">
+  <span *ngIf="billingForm.get('buyerName').errors['required']">Buyer Name is required</span>
+  <span *ngIf="billingForm.get('buyerName').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="buyerAddress" placeholder=" ">
+<label>Buyer Address</label>
+<div class="error" *ngIf="billingForm.get('buyerAddress').invalid && billingForm.get('buyerAddress').touched">
+  <span *ngIf="billingForm.get('buyerAddress').errors['required']">Buyer Address is required</span>
+  <span *ngIf="billingForm.get('buyerAddress').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="buyerPhone" placeholder=" ">
+<label>Buyer Phone</label>
+<div class="error" *ngIf="billingForm.get('buyerPhone').invalid && billingForm.get('buyerPhone').touched">
+  <span *ngIf="billingForm.get('buyerPhone').errors['required']">Buyer Phone is required</span>
+  <span *ngIf="billingForm.get('buyerPhone').errors['pattern']">Only numbers, spaces, dashes, plus allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="buyerState" placeholder=" ">
+<label>Buyer State</label>
+<div class="error" *ngIf="billingForm.get('buyerState').invalid && billingForm.get('buyerState').touched">
+  <span *ngIf="billingForm.get('buyerState').errors['required']">Buyer State is required</span>
+  <span *ngIf="billingForm.get('buyerState').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="consigneeName" placeholder=" ">
+<label>Consignee Name</label>
+<div class="error" *ngIf="billingForm.get('consigneeName').invalid && billingForm.get('consigneeName').touched">
+  <span *ngIf="billingForm.get('consigneeName').errors['required']">Consignee Name is required</span>
+  <span *ngIf="billingForm.get('consigneeName').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="consigneeAddress" placeholder=" ">
+<label>Consignee Address</label>
+<div class="error" *ngIf="billingForm.get('consigneeAddress').invalid && billingForm.get('consigneeAddress').touched">
+  <span *ngIf="billingForm.get('consigneeAddress').errors['required']">Consignee Address is required</span>
+  <span *ngIf="billingForm.get('consigneeAddress').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="consigneePhone" placeholder=" ">
+<label>Consignee Phone</label>
+<div class="error" *ngIf="billingForm.get('consigneePhone').invalid && billingForm.get('consigneePhone').touched">
+  <span *ngIf="billingForm.get('consigneePhone').errors['required']">Consignee Phone is required</span>
+  <span *ngIf="billingForm.get('consigneePhone').errors['pattern']">Only numbers, spaces, dashes, plus allowed</span>
+</div>
+</div>
+
+<div class="form-group">
+<input type="text" formControlName="consigneeState" placeholder=" ">
+<label>Consignee State</label>
+<div class="error" *ngIf="billingForm.get('consigneeState').invalid && billingForm.get('consigneeState').touched">
+  <span *ngIf="billingForm.get('consigneeState').errors['required']">Consignee State is required</span>
+  <span *ngIf="billingForm.get('consigneeState').errors['pattern']">Only letters, numbers, spaces, dashes, dots, commas, colons allowed</span>
+</div>
+</div>
+
+</div>
+
+<button type="submit">Save</button>
+
+</form>
+
+</div>
