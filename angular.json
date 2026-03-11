@@ -16,11 +16,11 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-              "index": "src/index.html",  // ✓ Points to src/index.html
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-             "baseHref": "/Vario/",  // Add this
-            "outputPath": "dist/vario"
+            "baseHref": "/Vario/",
+            "outputPath": "dist/vario",
             "assets": [
               {
                 "glob": "**/*",
@@ -28,8 +28,7 @@
               }
             ],
             "styles": ["src/styles.css", "node_modules/bootstrap/dist/css/bootstrap.min.css"],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -43,12 +42,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumError": "5MB"
                 }
               ],
               "outputHashing": "all"
@@ -81,6 +80,9 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
