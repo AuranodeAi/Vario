@@ -1,37 +1,38 @@
 name: Build and Deploy Vario
-
 on:
-push:
-branches:
-- QA
+  push:
+    branches:
+      - main
 
-permissions:
-contents: write
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-build-and-deploy:
-runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
 
-  - name: Setup Node
-    uses: actions/setup-node@v4
-    with:
-      node-version: "20"
+      - name: Install Dependencies
+        run: npm install
 
-  - name: Install dependencies
-    run: npm install
+      - name: Build Project
+        # We use lowercase 'vario' here as defined in your angular.json
+        run: npx ng build --configuration production --base-href "/Vario/"
 
-  - name: Build Angular project
-    run: npx ng build --configuration production --base-href "/Vario/"
+      - name: Fix for Angular Routing (404)
+        # Using the exact path created by your 'application' builder
+        run: cp dist/vario/browser/index.html dist/vario/browser/404.html
 
-  - name: Copy index.html to 404.html
-    run: cp dist/vario/browser/index.html dist/vario/browser/404.html
-
-  - name: Deploy to GitHub Pages
-    uses: JamesIves/github-pages-deploy-action@v4
-    with:
-      folder: dist/vario/browser
-      branch: gh-pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # This folder path MUST match your angular.json project name
+          folder: dist/vario/browser 
+          branch: gh-pages
