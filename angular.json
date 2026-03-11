@@ -20,7 +20,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
              "baseHref": "/Vario/",  // Add this
-            "outputPath": "dist/vario"
+            "outputPath": "dist/vario",
             "assets": [
               {
                 "glob": "**/*",
