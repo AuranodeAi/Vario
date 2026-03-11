@@ -4,6 +4,7 @@ import { Base } from '../core/base/base';
 import { Dashboard } from '../core/dashboard/dashboard';
 import { Toolboard } from '../Feature/toolboard/toolboard';
 import { Billing } from '../Feature/billing/billing';
+import { Category } from '../Feature/category/category';
 
 export const routes: Routes = [
     { path: '', component: Login },          // default route
@@ -19,6 +20,11 @@ export const routes: Routes = [
                         path: 'toolboard/Billing',
                         component: Billing
                     },
+ {
+                        path: 'toolboard/Category',
+                        component: Category
+                    },
+
                 ]
             },
         ]
