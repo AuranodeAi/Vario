@@ -1,38 +1,39 @@
 name: Build and Deploy Vario
+
 on:
-  push:
-    branches:
-      - QA
-# THE FIX: Force GitHub Actions to use Node.js 24
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+push:
+branches:
+- QA
+
+permissions:
+contents: write
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+build-and-deploy:
+runs-on: ubuntu-latest
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24' # Your Angular build will use Node 24
+```
+steps:
+  - name: Checkout Code
+    uses: actions/checkout@v4
 
-      - name: Install Dependencies
-        run: npm install
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '20'
 
-      - name: Build Project
-        # Ensure base-href matches your repo name exactly
-        run: npx ng build --configuration production --base-href "/Vario/"
+  - name: Install Dependencies
+    run: npm install
 
-      - name: Fix for Angular Routing (404)
-        # Copies index.html to 404.html so refreshes work on GitHub Pages
-        run: cp dist/vario/browser/index.html dist/vario/browser/404.html
+  - name: Build Project
+    run: npx ng build --configuration production --base-href "/Vario/"
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist/vario/browser 
-          branch: gh-pages/browser 
-          branch: gh-pages
+  - name: Fix Angular Routing (404 fallback)
+    run: cp dist/vario/browser/index.html dist/vario/browser/404.html
+
+  - name: Deploy to GitHub Pages
+    uses: JamesIves/github-pages-deploy-action@v4
+    with:
+      folder: dist/vario/browser
+      branch: gh-pages
+```
