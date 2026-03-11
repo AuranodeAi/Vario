@@ -16,8 +16,11 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+              "index": "src/index.html",  // ✓ Points to src/index.html
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+             "baseHref": "/Vario/",  // Add this
+            "outputPath": "dist/vario"
             "assets": [
               {
                 "glob": "**/*",
