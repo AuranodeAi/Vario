@@ -20,7 +20,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "baseHref": "/Vario/",
-            "outputPath": "dist/vario",
+             "outputPath": "docs",
             "assets": [
               {
                 "glob": "**/*",
@@ -38,6 +38,7 @@
                   "with": "src/environment/environment.prod.ts"
                 }
               ],
+              "baseHref": "/vario/",
               "budgets": [
                 {
                   "type": "initial",
